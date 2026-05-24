@@ -85,10 +85,6 @@ project/
 
 Edit file `lib/main.dart` untuk mendefinisikan semua named routes dan helper function `popupAlert`:
 
-<div align="center">
-  <img src="SS/screenshot_main_dart.png" alt="main.dart Named Routes" width="700" />
-  <p><em>Gambar 1 — Konfigurasi Named Routes pada main.dart</em></p>
-</div>
 
 ```dart
 void main() => runApp(const MyApp());
@@ -165,10 +161,6 @@ Future<void> popupAlert(
 
 Halaman utama menampilkan kartu identitas, tombol, dropdown, dan grid menu navigasi ke 6 halaman. Setiap interaksi memunculkan **popup alert**:
 
-<div align="center">
-  <img src="SS/screenshot_home.png" alt="Halaman Utama" width="300" />
-  <p><em>Gambar 2 — Halaman Utama dengan grid menu navigasi</em></p>
-</div>
 
 ```dart
 void _goto(String route, String label) {
@@ -194,10 +186,6 @@ onPressed: () => popupAlert(context,
 
 Menampilkan data diri mahasiswa dalam bentuk kartu informasi. **Popup alert otomatis** muncul saat halaman pertama kali dibuka menggunakan `addPostFrameCallback`:
 
-<div align="center">
-  <img src="SS/screenshot_profil.png" alt="Halaman Profil" width="300" />
-  <p><em>Gambar 3 — Halaman Profil dengan popup selamat datang otomatis</em></p>
-</div>
 
 ```dart
 WidgetsBinding.instance.addPostFrameCallback((_) => popupAlert(context,
@@ -213,15 +201,6 @@ WidgetsBinding.instance.addPostFrameCallback((_) => popupAlert(context,
 
 Halaman form dengan validasi dua field (Nama dan Email) serta pilihan radio gender. Popup alert muncul saat validasi gagal maupun berhasil:
 
-<div align="center">
-  <img src="SS/screenshot_form_error.png" alt="Form Error" width="300" />
-  <p><em>Gambar 4 — Popup peringatan saat form tidak lengkap</em></p>
-</div>
-
-<div align="center">
-  <img src="SS/screenshot_form_sukses.png" alt="Form Sukses" width="300" />
-  <p><em>Gambar 5 — Popup sukses menampilkan data yang diinput</em></p>
-</div>
 
 ```dart
 void _submit() {
@@ -249,10 +228,6 @@ void _submit() {
 
 Menampilkan grid 9 kategori galeri. Setiap item yang ditekan memunculkan **popup alert** dengan ikon dan warna sesuai kategori:
 
-<div align="center">
-  <img src="SS/screenshot_galeri.png" alt="Halaman Galeri" width="300" />
-  <p><em>Gambar 6 — Halaman Galeri dengan popup per kategori</em></p>
-</div>
 
 ```dart
 onTap: () => popupAlert(context,
@@ -268,10 +243,6 @@ onTap: () => popupAlert(context,
 
 Menampilkan tiga toggle switch (Notifikasi, Mode Gelap, Suara) serta opsi Reset dan Logout. Setiap toggle menampilkan **popup alert** berisi status aktif/nonaktif. Tombol Reset dan Logout memunculkan **popup konfirmasi** dengan tombol Batal dan OK:
 
-<div align="center">
-  <img src="SS/screenshot_pengaturan.png" alt="Halaman Pengaturan" width="300" />
-  <p><em>Gambar 7 — Halaman Pengaturan dengan popup toggle dan konfirmasi</em></p>
-</div>
 
 ```dart
 onChanged: (v) {
@@ -291,10 +262,6 @@ onChanged: (v) {
 
 Menampilkan daftar notifikasi yang bisa dibuka (memunculkan popup), ditandai dibaca, dan dihapus dengan swipe. Swipe kiri memunculkan **popup konfirmasi** sebelum menghapus:
 
-<div align="center">
-  <img src="SS/screenshot_notifikasi.png" alt="Halaman Notifikasi" width="300" />
-  <p><em>Gambar 8 — Halaman Notifikasi dengan popup detail dan konfirmasi hapus</em></p>
-</div>
 
 ```dart
 confirmDismiss: (_) async {
@@ -316,10 +283,6 @@ confirmDismiss: (_) async {
 
 Menampilkan informasi aplikasi dan developer. **Popup otomatis** muncul saat halaman dibuka, serta popup konfirmasi saat tombol "Beri Rating" ditekan:
 
-<div align="center">
-  <img src="SS/screenshot_tentang.png" alt="Halaman Tentang" width="300" />
-  <p><em>Gambar 9 — Halaman Tentang dengan popup otomatis dan tombol rating</em></p>
-</div>
 
 ```dart
 WidgetsBinding.instance.addPostFrameCallback((_) => popupAlert(context,
