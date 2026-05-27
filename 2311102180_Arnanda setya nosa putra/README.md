@@ -265,12 +265,12 @@ Aplikasi ini menggunakan perpaduan **Local Notifications** dan pencatatan **Riwa
 
 | No | Deskripsi Tampilan | File Gambar (Tempat Screenshot Anda) |
 |:---:|:---|:---|
-| 1 | Halaman Utama — Daftar Mahasiswa (Pre-populated) | `<img src="SS/crud_main.png" width="250" />` |
-| 2 | Dialog Form — Tambah Mahasiswa Baru | `<img src="SS/tambah_dialog.png" width="250" />` |
-| 3 | Halaman Detail — Informasi Profil Mahasiswa | `<img src="SS/detail_profil.png" width="250" />` |
-| 4 | Halaman Riwayat Log — Daftar Aktivitas Sistem | `<img src="SS/riwayat_log.png" width="250" />` |
-| 5 | Halaman Statistik — Analisis Global & Filter Prodi | `<img src="SS/statistik.png" width="250" />` |
-| 6 | Notifikasi HP — Muncul di Status Bar / System Tray | `<img src="SS/status_bar_notif.png" width="250" />` |
+| 1 | Halaman Utama — Daftar Mahasiswa (Pre-populated) | `<img src="SS/hal-utama.jpeg" width="250" />` |
+| 2 | Dialog Form — Tambah Mahasiswa Baru | `<img src="SS/tambah-mahasiswa.jpeg" width="250" />` |
+| 3 | Halaman Detail — Informasi Profil Mahasiswa | `<img src="SS/detail.jpeg" width="250" />` |
+| 4 | Halaman Riwayat Log — Daftar Aktivitas Sistem | `<img src="SS/riwayat.jpeg" width="250" />` |
+| 5 | Halaman Statistik — Analisis Global & Filter Prodi | `<img src="SS/statistik.jpeg" width="250" />` |
+| 6 | Notifikasi HP — Muncul di Status Bar / System Tray | `<img src="SS/notif1.jpeg" width="250" /> <br/> <img src="SS/notif2.jpeg" width="250" />` |
 
 </div>
 
