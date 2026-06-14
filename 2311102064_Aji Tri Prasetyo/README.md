@@ -24,8 +24,8 @@
   <h3>Disusun Oleh :</h3>
 
   <p>
-    <strong>Arnanda Setya Nosa Putra</strong><br>
-    <strong>2311102180</strong><br>
+    <strong>Aji Tri Prasetyo</strong><br>
+    <strong>2311102064</strong><br>
     <strong>S1 IF-11-04</strong>
   </p>
 
@@ -91,7 +91,7 @@ Tambahkan package `flutter_local_notifications` pada file `pubspec.yaml` untuk m
 dependencies:
   flutter:
     sdk: flutter
-  flutter_local_notifications: ^21.0.0
+  flutter_local_notifications: ^17.0.0
   cupertino_icons: ^1.0.8
 ```
 
@@ -102,18 +102,20 @@ Lalu jalankan `flutter pub get` di terminal proyek.
 ### Langkah 3 — Konfigurasi Izin & Kompatibilitas Android
 
 1. Di file `android/app/src/main/AndroidManifest.xml`, tambahkan izin notifikasi di bagian atas:
+
    ```xml
    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
    ```
 
 2. Di file `android/app/build.gradle.kts`, aktifkan core library desugaring:
+
    ```kotlin
    compileOptions {
        sourceCompatibility = JavaVersion.VERSION_17
        targetCompatibility = JavaVersion.VERSION_17
        isCoreLibraryDesugaringEnabled = true
    }
-   
+
    dependencies {
        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
    }
@@ -130,7 +132,7 @@ class Mahasiswa {
   String nama;
   String nim;
   String jurusan;
-  double ipk; 
+  double ipk;
   DateTime tgllahir;
   bool gender;
 
@@ -149,7 +151,7 @@ class Mahasiswa {
 
 ### Langkah 5 — Buat Halaman CRUD Mahasiswa
 
-Halaman `lib/screens/mahasiswa_screen.dart` menampilkan daftar mahasiswa dengan gaya kartu modern. Operasi penambahan dan pengeditan data menggunakan modal `AlertDialog` yang disesuaikan ke tema gelap. 
+Halaman `lib/screens/mahasiswa_screen.dart` menampilkan daftar mahasiswa dengan gaya kartu modern. Operasi penambahan dan pengeditan data menggunakan modal `AlertDialog` yang disesuaikan ke tema gelap.
 
 Saat data berhasil disimpan/dihapus, notifikasi lokal akan ditembakkan ke HP:
 
@@ -161,7 +163,7 @@ Future<void> _tampilkanNotifikasi(String judul, String pesan) async {
     importance: Importance.max,
     priority: Priority.high,
   );
-  
+
   await flutterLocalNotificationsPlugin.show(
     id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
     title: judul,
@@ -192,12 +194,11 @@ File `lib/main.dart` menjadi pusat navigasi menggunakan `BottomNavigationBar` (m
 ```dart
 final List<Mahasiswa> dataMahasiswa = [
   Mahasiswa(
-    nama: "Arnanda Setya Nosa Putra",
-    nim: "2311102180",
+    nama: "Aji Tri Prasetyo",
+    nim: "2311102064",
     jurusan: "Teknik Informatika",
-    ipk: 4.0,
-    tgllahir: DateTime(2005, 1, 1),
-    gender: true,
+    ipk: 3.5,
+    tgllahir: DateTime(2005, 1, 23),
   ),
 ];
 ```
@@ -231,11 +232,11 @@ tugas-11/
 
 Aplikasi ini menggunakan perpaduan **Local Notifications** dan pencatatan **Riwayat Log** sistem pada setiap aksi CRUD:
 
-| No | Aksi Pengguna | Judul Notifikasi | Detail Notifikasi | Efek ke Riwayat Log |
-|:---:|:---|:---|:---|:---|
-| 1 | Menambahkan mahasiswa baru | **Data Berhasil Ditambah!** | Mahasiswa [Nama] ditambahkan. | Mencatat waktu dan info penambahan |
-| 2 | Memperbarui data mahasiswa | **Data Berhasil Diperbarui!** | Data [Nama] telah diubah. | Mencatat waktu dan info pembaruan |
-| 3 | Menghapus data mahasiswa | **Data Dihapus** | Data mahasiswa bernama [Nama] dihapus dari sistem. | Mencatat waktu dan info penghapusan |
+| No  | Aksi Pengguna              | Judul Notifikasi              | Detail Notifikasi                                  | Efek ke Riwayat Log                 |
+| :-: | :------------------------- | :---------------------------- | :------------------------------------------------- | :---------------------------------- |
+|  1  | Menambahkan mahasiswa baru | **Data Berhasil Ditambah!**   | Mahasiswa [Nama] ditambahkan.                      | Mencatat waktu dan info penambahan  |
+|  2  | Memperbarui data mahasiswa | **Data Berhasil Diperbarui!** | Data [Nama] telah diubah.                          | Mencatat waktu dan info pembaruan   |
+|  3  | Menghapus data mahasiswa   | **Data Dihapus**              | Data mahasiswa bernama [Nama] dihapus dari sistem. | Mencatat waktu dan info penghapusan |
 
 ---
 
@@ -257,20 +258,19 @@ Aplikasi ini menggunakan perpaduan **Local Notifications** dan pencatatan **Riwa
 
 ## 6. Screenshot Hasil Tampilan
 
-*(Silakan lakukan tangkapan layar (screenshot) pada HP Anda dan letakkan di dalam folder `SS` proyek dengan nama yang sesuai)*
+_(Silakan lakukan tangkapan layar (screenshot) pada HP Anda dan letakkan di dalam folder `SS` proyek dengan nama yang sesuai)_
 
 <br>
 
 <div align="center">
 
-| No | Deskripsi Tampilan | File Gambar (Tempat Screenshot Anda) |
-|:---:|:---|:---|
-| 1 | Halaman Utama — Daftar Mahasiswa (Pre-populated) | <img src="SS/hal-utama.jpeg" width="250" /> |
-| 2 | Dialog Form — Tambah Mahasiswa Baru | <img src="SS/tambah-mahasiswa.jpeg" width="250" /> |
-| 3 | Halaman Detail — Informasi Profil Mahasiswa | <img src="SS/detail.jpeg" width="250" /> |
-| 4 | Halaman Riwayat Log — Daftar Aktivitas Sistem | <img src="SS/riwayat.jpeg" width="250" /> |
-| 5 | Halaman Statistik — Analisis Global & Filter Prodi | <img src="SS/statistik.jpeg" width="250" /> |
-| 6 | Notifikasi HP — Muncul di Status Bar / System Tray | <img src="SS/notif1.jpeg" width="250" /> <br/> <img src="SS/notif2.jpeg" width="250" /> |
+| No  | Deskripsi Tampilan                                 | File Gambar (Tempat Screenshot Anda)               |
+| :-: | :------------------------------------------------- | :------------------------------------------------- |
+|  1  | Halaman Utama — Daftar Mahasiswa (Pre-populated)   | <img src="SS/hal-utama.jpeg" width="250" />        |
+|  2  | Dialog Form — Tambah Mahasiswa Baru                | <img src="SS/tambah-mahasiswa.jpeg" width="250" /> |
+|  3  | Halaman Detail — Informasi Profil Mahasiswa        | <img src="SS/detail.jpeg" width="250" />           |
+|  4  | Halaman Riwayat Log — Daftar Aktivitas Sistem      | <img src="SS/riwayat.jpeg" width="250" />          |
+|  5  | Halaman Statistik — Analisis Global & Filter Prodi | <img src="SS/statistik.jpeg" width="250" />        |
 
 </div>
 
