@@ -38,22 +38,23 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
 
   // Memunculkan Notifikasi & Mencatat ke Riwayat Log
   Future<void> _tampilkanNotifikasi(String judul, String pesan) async {
-    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-      'crud_channel',
-      'Notifikasi CRUD',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+          'crud_channel',
+          'Notifikasi CRUD',
+          importance: Importance.max,
+          priority: Priority.high,
+        );
     const NotificationDetails platformDetails = NotificationDetails(
       android: androidDetails,
     );
 
-    // Tembakkan notifikasi ke sistem bar Android
+    // KUNCI PERBAIKAN: Hapus label named arguments dan gunakan urutan langsung
     await flutterLocalNotificationsPlugin.show(
-      id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
-      title: judul,
-      body: pesan,
-      notificationDetails: platformDetails,
+      DateTime.now().millisecondsSinceEpoch ~/ 1000, // 1. ID
+      judul, // 2. Title
+      pesan, // 3. Body
+      platformDetails, // 4. Notification Details
     );
 
     // Tambahkan ke Log Riwayat
@@ -111,7 +112,11 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
             ),
             title: Text(
               index == null ? 'Tambah Mahasiswa' : 'Edit Mahasiswa',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             content: SingleChildScrollView(
               child: Form(
@@ -167,10 +172,15 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                         ),
                       ),
                       items: _daftarJurusan
-                          .map((j) => DropdownMenuItem(
-                                value: j,
-                                child: Text(j, style: const TextStyle(color: Colors.white)),
-                              ))
+                          .map(
+                            (j) => DropdownMenuItem(
+                              value: j,
+                              child: Text(
+                                j,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          )
                           .toList(),
                       onChanged: (val) =>
                           setDialogState(() => _jurusanTerpilih = val),
@@ -203,7 +213,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                             _tglLahirTerpilih == null
                                 ? 'Tanggal Lahir'
                                 : 'Tanggal Lahir: ${_tglLahirTerpilih!.day}/${_tglLahirTerpilih!.month}/${_tglLahirTerpilih!.year}',
-                            style: const TextStyle(color: Colors.white, fontSize: 14),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                         TextButton(
@@ -233,7 +246,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                           },
                           child: const Text(
                             'Pilih',
-                            style: TextStyle(color: Color(0xFF7F5AF0), fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Color(0xFF7F5AF0),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
@@ -243,7 +259,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Jenis Kelamin',
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     Row(
@@ -255,7 +274,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                           onChanged: (val) =>
                               setDialogState(() => _genderTerpilih = val!),
                         ),
-                        const Text('Laki-laki', style: TextStyle(color: Colors.white)),
+                        const Text(
+                          'Laki-laki',
+                          style: TextStyle(color: Colors.white),
+                        ),
                         Radio<bool>(
                           value: false,
                           groupValue: _genderTerpilih,
@@ -263,7 +285,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                           onChanged: (val) =>
                               setDialogState(() => _genderTerpilih = val!),
                         ),
-                        const Text('Perempuan', style: TextStyle(color: Colors.white)),
+                        const Text(
+                          'Perempuan',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ],
@@ -273,12 +298,17 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Batal', style: TextStyle(color: Color(0xFF94A1B2))),
+                child: const Text(
+                  'Batal',
+                  style: TextStyle(color: Color(0xFF94A1B2)),
+                ),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF7F5AF0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate() &&
@@ -312,7 +342,13 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                     Navigator.pop(context);
                   }
                 },
-                child: const Text('Simpan', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: const Text(
+                  'Simpan',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
@@ -348,7 +384,13 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
           children: [
             Icon(Icons.warning_amber_rounded, color: Colors.orange),
             SizedBox(width: 10),
-            Text('Konfirmasi Hapus', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            Text(
+              'Konfirmasi Hapus',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
         content: Text(
@@ -359,13 +401,18 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
           // pilihan 1: Batal (Tutup dialog tanpa menghapus)
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Batal', style: TextStyle(color: Color(0xFF94A1B2))),
+            child: const Text(
+              'Batal',
+              style: TextStyle(color: Color(0xFF94A1B2)),
+            ),
           ),
           // pilihan 2: Ya (Tutup dialog lalu jalankan proses hapus)
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.redAccent,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             onPressed: () {
               Navigator.pop(context); // tutup dialog konfirmasi terlebih dahulu
@@ -373,7 +420,10 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
             },
             child: const Text(
               'Ya, Hapus',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
@@ -387,8 +437,12 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
       backgroundColor: const Color(0xFF0F0E17), // Premium dark background
       appBar: AppBar(
         title: const Text(
-          'Mahasiswa - Arnanda S. N. P.',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+          'Mahasiswa - Aji T.P.',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         elevation: 0,
         flexibleSpace: Container(
@@ -406,7 +460,11 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.people_outline_rounded, size: 64, color: Color(0xFF94A1B2)),
+                  Icon(
+                    Icons.people_outline_rounded,
+                    size: 64,
+                    color: Color(0xFF94A1B2),
+                  ),
                   SizedBox(height: 16),
                   Text(
                     'Belum ada data mahasiswa.',
@@ -421,7 +479,9 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
               itemBuilder: (context, index) {
                 final mhs = widget.data[index];
                 // Use gender-based or just general accent color
-                final accentColor = mhs.gender ? const Color(0xFF7F5AF0) : Colors.pinkAccent;
+                final accentColor = mhs.gender
+                    ? const Color(0xFF7F5AF0)
+                    : Colors.pinkAccent;
 
                 return Card(
                   color: const Color(0xFF16161A),
@@ -436,17 +496,17 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                   child: Row(
                     children: [
                       // Left vertical colored accent bar
-                      Container(
-                        width: 6,
-                        height: 76,
-                        color: accentColor,
-                      ),
+                      Container(width: 6, height: 76, color: accentColor),
                       const SizedBox(width: 14),
                       // Main info
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, '/detail', arguments: mhs);
+                            Navigator.pushNamed(
+                              context,
+                              '/detail',
+                              arguments: mhs,
+                            );
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -459,7 +519,9 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                                     shape: BoxShape.circle,
                                   ),
                                   child: Icon(
-                                    mhs.gender ? Icons.male_rounded : Icons.female_rounded,
+                                    mhs.gender
+                                        ? Icons.male_rounded
+                                        : Icons.female_rounded,
                                     color: accentColor,
                                     size: 24,
                                   ),
@@ -467,12 +529,13 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                                 const SizedBox(width: 14),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         mhs.nama,
                                         style: const TextStyle(
-                                          fontWeight: FontWeight.bold, 
+                                          fontWeight: FontWeight.bold,
                                           fontSize: 16,
                                           color: Colors.white,
                                         ),
@@ -498,11 +561,17 @@ class _CrudMahasiswaPageState extends State<CrudMahasiswaPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.edit_rounded, color: Color(0xFF2CB67D)),
+                            icon: const Icon(
+                              Icons.edit_rounded,
+                              color: Color(0xFF2CB67D),
+                            ),
                             onPressed: () => _tampilFormDialog(index: index),
                           ),
                           IconButton(
-                            icon: const Icon(Icons.delete_outline_rounded, color: Colors.redAccent),
+                            icon: const Icon(
+                              Icons.delete_outline_rounded,
+                              color: Colors.redAccent,
+                            ),
                             onPressed: () => _konfirmasiHapus(index),
                           ),
                           const SizedBox(width: 6),

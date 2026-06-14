@@ -10,33 +10,36 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 final List<String> logNotifikasi = []; // List penyimpan log riwayat aktivitas
 
-// Pre-populasi data mahasiswa untuk Arnanda Setya Nosa Putra
+// Pre-populasi data mahasiswa untuk Aji
 final List<Mahasiswa> dataMahasiswa = [
   Mahasiswa(
-    nama: "Arnanda Setya Nosa Putra",
-    nim: "2311102180",
+    nama: "Aji Tri Prasetyo",
+    nim: "2311102064",
     jurusan: "Teknik Informatika",
-    ipk: 4.0,
-    tgllahir: DateTime(2005, 1, 1),
+    ipk: 3.5,
+    tgllahir: DateTime(2005, 1, 23),
     gender: true,
   ),
 ];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
+
   const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
   );
-  await flutterLocalNotificationsPlugin.initialize(
-    settings: initializationSettings,
-  );
+
+  // Penulisan parameter yang sudah benar (tanpa named argument)
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
   // Minta izin notifikasi untuk Android 13 ke atas (API 33+)
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+        AndroidFlutterLocalNotificationsPlugin
+      >()
       ?.requestNotificationsPermission();
 
   runApp(const MyApp());
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tugas 11 - Arnanda Setya Nosa Putra',
+      title: 'Tugas 11 - Aji Tri Prasetyo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -99,10 +102,8 @@ class _MainNavigationState extends State<MainNavigation> {
         ],
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: const Color(0xFF242629), width: 1.5),
-          ),
+        decoration: const BoxDecoration(
+          border: Border(top: BorderSide(color: Color(0xFF242629), width: 1.5)),
         ),
         child: BottomNavigationBar(
           backgroundColor: const Color(0xFF16161A),
@@ -118,18 +119,27 @@ class _MainNavigationState extends State<MainNavigation> {
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.people_alt_rounded), 
-              activeIcon: Icon(Icons.people_alt_rounded, color: Color(0xFF2CB67D)),
+              icon: Icon(Icons.people_alt_rounded),
+              activeIcon: Icon(
+                Icons.people_alt_rounded,
+                color: Color(0xFF2CB67D),
+              ),
               label: 'Mahasiswa',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.history_edu_rounded),
-              activeIcon: Icon(Icons.history_edu_rounded, color: Color(0xFF2CB67D)),
+              activeIcon: Icon(
+                Icons.history_edu_rounded,
+                color: Color(0xFF2CB67D),
+              ),
               label: 'Riwayat Log',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.analytics_rounded),
-              activeIcon: Icon(Icons.analytics_rounded, color: Color(0xFF2CB67D)),
+              activeIcon: Icon(
+                Icons.analytics_rounded,
+                color: Color(0xFF2CB67D),
+              ),
               label: 'Statistik',
             ),
           ],
@@ -149,8 +159,12 @@ class RiwayatLogPage extends StatelessWidget {
       backgroundColor: const Color(0xFF0F0E17),
       appBar: AppBar(
         title: const Text(
-          'Riwayat - Arnanda S. N. P.',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+          'Riwayat - Aji T.P.',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         elevation: 0,
         flexibleSpace: Container(
@@ -168,7 +182,11 @@ class RiwayatLogPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.history_toggle_off_rounded, size: 64, color: Color(0xFF94A1B2)),
+                  Icon(
+                    Icons.history_toggle_off_rounded,
+                    size: 64,
+                    color: Color(0xFF94A1B2),
+                  ),
                   SizedBox(height: 16),
                   Text(
                     'Belum ada riwayat aktivitas sistem.',
@@ -190,7 +208,10 @@ class RiwayatLogPage extends StatelessWidget {
                     side: const BorderSide(color: Color(0xFF242629)),
                   ),
                   child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 6,
+                    ),
                     leading: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: const BoxDecoration(

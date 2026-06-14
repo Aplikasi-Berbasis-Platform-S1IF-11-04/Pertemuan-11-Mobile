@@ -42,11 +42,14 @@ class _StatistikPageState extends State<StatistikPage> {
         : widget.data.map((m) => m.ipk).reduce((a, b) => a + b) / totalGlobal;
 
     // mengambil data sesuai filter jurusan yang dipilih
-    List<Mahasiswa> dataFilter =
-        widget.data.where((m) => m.jurusan == _selectedJurusan).toList();
+    List<Mahasiswa> dataFilter = widget.data
+        .where((m) => m.jurusan == _selectedJurusan)
+        .toList();
 
     int totalFilter = dataFilter.length; // data jumlah mahasiswa
-    int lakiLaki = dataFilter.where((m) => m.gender).length; // data jumlah mahasiswa laki-laki
+    int lakiLaki = dataFilter
+        .where((m) => m.gender)
+        .length; // data jumlah mahasiswa laki-laki
     int perempuan = totalFilter - lakiLaki; // data jumlah mahasiswa perempuan
     double rataIpkFilter = totalFilter == 0
         ? 0
@@ -56,14 +59,21 @@ class _StatistikPageState extends State<StatistikPage> {
       backgroundColor: const Color(0xFF0F0E17), // Premium dark background
       appBar: AppBar(
         title: const Text(
-          "Statistik - Arnanda S. N. P.",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+          "Statistik - Aji T.P.",
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         elevation: 0,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF2CB67D), Color(0xFF1E8256)], // Distinct green/teal gradient for stats
+              colors: [
+                Color(0xFF2CB67D),
+                Color(0xFF1E8256),
+              ], // Distinct green/teal gradient for stats
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -78,13 +88,17 @@ class _StatistikPageState extends State<StatistikPage> {
             // bagian ringkasan data global
             const Row(
               children: [
-                Icon(Icons.analytics_outlined, color: Color(0xFF2CB67D), size: 24),
+                Icon(
+                  Icons.analytics_outlined,
+                  color: Color(0xFF2CB67D),
+                  size: 24,
+                ),
                 SizedBox(width: 8),
                 Text(
                   "Ringkasan Global",
                   style: TextStyle(
-                    fontSize: 18, 
-                    fontWeight: FontWeight.bold, 
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 0.5,
                   ),
@@ -122,13 +136,17 @@ class _StatistikPageState extends State<StatistikPage> {
             // bagian data sesuai filter jurusan
             const Row(
               children: [
-                Icon(Icons.filter_alt_outlined, color: Color(0xFF7F5AF0), size: 24),
+                Icon(
+                  Icons.filter_alt_outlined,
+                  color: Color(0xFF7F5AF0),
+                  size: 24,
+                ),
                 SizedBox(width: 8),
                 Text(
                   "Filter Program Studi",
                   style: TextStyle(
-                    fontSize: 18, 
-                    fontWeight: FontWeight.bold, 
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 0.5,
                   ),
@@ -138,7 +156,9 @@ class _StatistikPageState extends State<StatistikPage> {
             const SizedBox(height: 16),
             Theme(
               data: Theme.of(context).copyWith(
-                canvasColor: const Color(0xFF16161A), // Dropdown menu background color
+                canvasColor: const Color(
+                  0xFF16161A,
+                ), // Dropdown menu background color
               ),
               child: DropdownButtonFormField<String>(
                 value: _selectedJurusan,
@@ -157,18 +177,26 @@ class _StatistikPageState extends State<StatistikPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFF7F5AF0), width: 1.5),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF7F5AF0),
+                      width: 1.5,
+                    ),
                   ),
-                  prefixIcon: const Icon(Icons.category_rounded, color: Color(0xFF94A1B2)),
+                  prefixIcon: const Icon(
+                    Icons.category_rounded,
+                    color: Color(0xFF94A1B2),
+                  ),
                 ),
                 items: _daftarJurusan
-                    .map((j) => DropdownMenuItem(
-                          value: j,
-                          child: Text(
-                            j,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ))
+                    .map(
+                      (j) => DropdownMenuItem(
+                        value: j,
+                        child: Text(
+                          j,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    )
                     .toList(),
                 onChanged: (val) => setState(() => _selectedJurusan = val!),
               ),
@@ -231,17 +259,17 @@ class _StatistikPageState extends State<StatistikPage> {
           child: Icon(icon, color: color, size: 28),
         ),
         title: Text(
-          title, 
+          title,
           style: const TextStyle(
-            fontWeight: FontWeight.bold, 
+            fontWeight: FontWeight.bold,
             color: Color(0xFF94A1B2),
           ),
         ),
         trailing: Text(
           value,
           style: const TextStyle(
-            fontSize: 22, 
-            fontWeight: FontWeight.bold, 
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
@@ -277,10 +305,10 @@ class _StatistikPageState extends State<StatistikPage> {
             ),
             const SizedBox(height: 10),
             Text(
-              title, 
+              title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 12, 
+                fontSize: 12,
                 color: Color(0xFF94A1B2),
                 fontWeight: FontWeight.w500,
               ),
@@ -289,8 +317,8 @@ class _StatistikPageState extends State<StatistikPage> {
             Text(
               value,
               style: const TextStyle(
-                fontSize: 20, 
-                fontWeight: FontWeight.bold, 
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
