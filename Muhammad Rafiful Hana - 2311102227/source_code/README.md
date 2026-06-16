@@ -5,7 +5,7 @@
 
 <br>
 <p align="center">
-  <img src="output/logo telkom university.png" width="150"/>
+  <img src="https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-9-Mobile/refs/heads/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/logo%20telkom%20university.png" width="150"/>
 </p>
 <br>
 
@@ -501,19 +501,19 @@ Fungsi:
 # Output Program
 
 ### Home Page
-![Home Page](output/Output%201.png)
+![Home Page](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%201.png)
 
 ### Button Page
-![Button Page](output/Output%202.png)
+![Button Page](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%202.png)
 
 ### Profile Page
-![Profile Page](output/Output%203.png)
+![Profile Page](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%203.png)
 
 ### Notification Submit
-![Notification Submit](output/Output%204.png)
+![Notification Submit](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%204.png)
 
 ### Notification Like
-![Notification Like](output/Output%205.png)
+![Notification Like](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%205.png)
 
 ### Notification Unlike
-![Notification Unlike](output/Output%206.png)
+![Notification Unlike](https://raw.githubusercontent.com/Aplikasi-Berbasis-Platform-S1IF-11-04/Pertemuan-11-Mobile/main/Muhammad%20Rafiful%20Hana%20-%202311102227/source_code/output/Output%206.png)
